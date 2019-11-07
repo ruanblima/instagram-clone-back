@@ -18,7 +18,7 @@ module.exports = {
         const post = await Post.create({
             user: user_id,
             imagem: filename,
-            titulo
+            titulo: titulo
         })
 
         return res.json(post) 
