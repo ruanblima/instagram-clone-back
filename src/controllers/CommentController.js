@@ -8,7 +8,7 @@ module.exports = {
         const { user_id } = req.headers;
 
         const comment = await Comment.create({
-            user: user_id,
+            author: user_id,
             comment: comment,
             post: post
         })
