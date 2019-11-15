@@ -10,11 +10,11 @@ const PostSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    comentarios: [{
+    comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
     }],
-    curtidas: [{
+    likes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Like"
     }],
