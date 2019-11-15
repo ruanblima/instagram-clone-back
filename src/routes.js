@@ -7,6 +7,7 @@ const PostController = require('./controllers/PostController');
 const FeedController = require('./controllers/FeedController');
 const UserController = require('./controllers/UserController');
 const CommentController = require('./controllers/CommentController');
+const LikeController = require('./controllers/LikeController');
 
 const routes = express.Router();
 const upload = multer(uploadConfig);
@@ -32,6 +33,9 @@ routes.put('/users/:id', UserController.update);
 routes.delete('/users/:id', UserController.destroy);
 
 //Rotas referentes ao comentarios
-routes.post('/comment', UserController.store);
+routes.post('/comment', CommentController.store);
+
+//Rotas referentes as curtidas
+routes.post('/like', LikeController.store);
 
 module.exports = routes;
