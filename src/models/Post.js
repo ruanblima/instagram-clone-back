@@ -6,6 +6,7 @@ const PostSchema = new mongoose.Schema({
     curtida: Number,
     localizacao: String,
     descricao: String,
+    hastags: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
