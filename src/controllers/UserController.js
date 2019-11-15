@@ -5,21 +5,26 @@ module.exports = {
     //Store: Criar um usuário
     async store(req, res) {
         const { nome, email, senha, telefone } = req.body;
-        console.log(`Nome: ${nome} - Email: ${email} - Senha ${senha} - Telefone ${telefone}`);
-        const user = await User.create({
-            nome: nome,
-            email: email,
-            senha: senha,
-            telefone: telefone
-        })
 
-        console.log(user);
-        return res.json(user);
+        let user = await User.findOne({ email });
+
+        if (user) {
+            return res.status(400).json({ error: 'Email já cadastrado.'})
+        }else{
+            const user = await User.create({
+                nome: nome,
+                email: email,
+                senha: senha,
+                telefone: telefone
+            })
+            return res.json(user);
+        }
+    
         
 
     },
 
-    //Index: Retorna uma listagem de usuarios
+    //Index: Retorna uma lista de usuarios
     async index(req, res) {
         const users = await User.find();
 

@@ -4,18 +4,24 @@ const PostSchema = new mongoose.Schema({
     imagem: String,
     titulo: String,
     curtida: Number,
+    localizacao: String,
+    descricao: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    comentarios: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }],
+    curtidas: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Like"
+    }],
 }, {
     toJSON: {
         virtuals: true,
     }
 });
-
-PostSchema.virtual('imagem_url').get(function(){
-    return `http://localhost:3333/files/${this.imagem}`
-})
 
 module.exports = mongoose.model('Post', PostSchema);

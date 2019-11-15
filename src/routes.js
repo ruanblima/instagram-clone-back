@@ -6,6 +6,7 @@ const SessionController = require('./controllers/SessionController');
 const PostController = require('./controllers/PostController');
 const FeedController = require('./controllers/FeedController');
 const UserController = require('./controllers/UserController');
+const CommentController = require('./controllers/CommentController');
 
 const routes = express.Router();
 const upload = multer(uploadConfig);
@@ -29,5 +30,8 @@ routes.get('/users/:id', UserController.show);
 routes.post('/users', UserController.store);
 routes.put('/users/:id', UserController.update);
 routes.delete('/users/:id', UserController.destroy);
+
+//Rotas referentes ao comentarios
+routes.post('/comment', UserController.store);
 
 module.exports = routes;

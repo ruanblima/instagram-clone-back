@@ -4,9 +4,9 @@ module.exports = {
 
     //Store: Criar uma sessão
     async store(req, res) {
-        const { email } = req.body;
+        const { email, senha } = req.body;
 
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ email, senha});
 
         if (!user) {
             return res.status(400).json({ error: 'Usuário não existe'})

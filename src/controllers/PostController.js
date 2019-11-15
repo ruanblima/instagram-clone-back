@@ -5,8 +5,7 @@ module.exports = {
 
     //Store: Cria uma postagem 
     async store(req, res){
-        const { filename } = req.file;
-        const { titulo } = req.body;
+        const { titulo, imagem, descricao, localizacao } = req.body;
         const { user_id } = req.headers;
 
         const user = await User.findById(user_id);
@@ -17,8 +16,10 @@ module.exports = {
 
         const post = await Post.create({
             user: user_id,
-            imagem: filename,
-            titulo: titulo
+            imagem: imagem,
+            titulo: titulo,
+            localizacao: localizacao,
+            descricao: descricao,
         })
 
         return res.json(post) 
